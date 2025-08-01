@@ -1,17 +1,30 @@
 {
   "manifest_version": 3,
-  "name": "Sobes - Block Focus",
-  "version": "1.0",
+  "name": "Sobes.tech - Block Focus",
+  "version": "1.1",
   "description": "Blocks focus event listeners and page visibility on all websites",
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["content.js"],
+      "js": ["src/settings-bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/content.js"],
       "run_at": "document_start",
       "world": "MAIN",
       "all_frames": true
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/copy-helper.js"],
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
-
-  "host_permissions": ["*://*/*"]
+  "host_permissions": ["*://*/*"],
+  "permissions": ["storage"],
+  "options_page": "public/options.html"
 }
