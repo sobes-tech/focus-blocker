@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Sobes - Block Focus",
+  "version": "1.0",
+  "description": "Blocks focus event listeners and page visibility on all websites",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    }
+  ],
+
+  "host_permissions": ["*://*/*"]
+}
